@@ -79,7 +79,7 @@ These skills include good communication, staying disciplined, managing my time w
              $query->where('quadrante', 1)->with('strategies');
          }])
          ->whereHas('snaipoint', function ($query) use ($csmfCode) {
-             $query->where('csmfCod', '=', $csmfCode);
+             $query->where('csmfCode', '=', $csmfCode);
          })->get();
 
     Fragment from MonitorController:
@@ -88,6 +88,6 @@ These skills include good communication, staying disciplined, managing my time w
             Cache::remember(
                 CacheKey::MONITORS_LIST->value,
                 CacheTime::HALF_HOUR->value,
-                fn() => $this->monitorService->getMonitors(Auth::User()->csmfCod)
+                fn() => $this->monitorService->getMonitors(Auth::User()->csmfCode)
             )
         );
