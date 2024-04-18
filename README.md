@@ -52,7 +52,7 @@ These skills include good communication, staying disciplined, managing my time w
 
     **>>** Monitoring the performance of live web applications, especially in Laravel, is crucial for ensuring optimal user experience. My aproach is to use:
 
-    1. Real time monitoring tools like New Relic, in larval application sometimes I use pulse on development level.
+    1. Real time monitoring tools like New Relic, in Laravel application sometimes I use pulse on development level.
        
     3. Continues Performance testing, simulating user traffic and checking any slow queries before any deployment to production.
        
@@ -64,7 +64,7 @@ These skills include good communication, staying disciplined, managing my time w
   
 10. **Could you please send us a sample of some production code you have written and are particularly proud of or find intriguing? Please also explain why you are proud of this code or why you find it interesting**
 
-    **>>** The code snippet I'm providing today is not technically complex and doesn't apply bitwise logic. However, I'm really proud of it because it represents a fragment of the code that replaced a large chunk of the original code while I was rewriting the project, as mentioned in question 5 (example 2). The problem here was undocumented legacy code, which took a long time to declutter. After reinforcing relations and fetching necessary data, I was able to remove unnecessary calculations, loops, and database calls within loops entirely. The main challenge was not writing this code; the main challenge was reducing something massive to this streamlined form. please note that becuase of specific reasons I was not allowed to change anything in tables or names of colomns.
+    **>>** The code snippet I'm providing today is not technically complex and doesn't apply big logic. However, I'm really proud of it because it represents a fragment of the code that replaced a large chunk of the original code while I was rewriting the project, as mentioned in question 5 (example 2). The problem here was undocumented legacy code, which took a long time to declutter. After reinforcing relations and fetching necessary data, I was able to remove unnecessary calculations, loops, and database calls within loops entirely. The main challenge was not writing this code; the main challenge was reducing something massive to this streamlined form. please note that becuase of specific reasons I was not allowed to change anything in tables or names of colomns.
 
     Fragment from getMonitors funtion
     
