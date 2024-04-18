@@ -60,4 +60,34 @@ These skills include good communication, staying disciplined, managing my time w
        
     7. Correct logging and error handling is really important, so I make sure to implement logging mechanisms, which later will help to pinpoint problems and bottlenecks.
        
-    9. Database optimisation is also crucial, I always implement indexes where it is needed, make sure to add correct constraints. Also one important issue I keep an eye on is N+1 query problem. 
+    9. Database optimisation is also crucial, I always implement indexes where it is needed, make sure to add correct constraints. Also one important issue I keep an eye on is N+1 query problem.
+  
+10. **Could you please send us a sample of some production code you have written and are particularly proud of or find intriguing? Please also explain why you are proud of this code or why you find it interesting**
+
+    **>>** The code snippet I'm providing today is not technically complex and doesn't apply bitwise logic. However, I'm really proud of it because it represents a fragment of the code that replaced a large chunk of the original code while I was rewriting the project, as mentioned in question 5 (example 2). The problem here was undocumented legacy code, which took a long time to declutter. After reinforcing relations and fetching necessary data, I was able to remove unnecessary calculations, loops, and database calls within loops entirely. The main challenge was not writing this code; the main challenge was reducing something massive to this streamlined form. please note that becuase of specific reasons I was not allowed to change anything in tables or names of colomns.
+
+    Fragment from getMonitors funtion
+    
+        return Monitor::select(
+             'idMonitor',
+             'label',
+             'active',
+             'serial',
+             'category'
+         )
+         ->with(['virtualmonitors' => function($query) {
+             $query->where('quadrante', 1)->with('strategies');
+         }])
+         ->whereHas('snaipoint', function ($query) use ($csmfCode) {
+             $query->where('csmfCod', '=', $csmfCode);
+         })->get();
+
+    Fragment from MonitorController:
+
+        return response()->json(
+            Cache::remember(
+                CacheKey::MONITORS_LIST->value,
+                CacheTime::HALF_HOUR->value,
+                fn() => $this->monitorService->getMonitors(Auth::User()->csmfCod)
+            )
+        );
